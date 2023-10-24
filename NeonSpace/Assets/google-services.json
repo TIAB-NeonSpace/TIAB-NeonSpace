@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "57464760993",
+    "firebase_url": "https://api-project-52621318.firebaseio.com",
+    "project_id": "api-project-52621318",
+    "storage_bucket": "api-project-52621318.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57464760993:android:c8f55e4d8a112438",
+        "android_client_info": {
+          "package_name": "com.deliciousgames.NeonSpace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57464760993-8p236sm4sbtk3lhf38g1e6qq91cg3hq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.deliciousgames.NeonSpace",
+            "certificate_hash": "30c5b9cf654434fb6522e78b671e533825212c9a"
+          }
+        },
+        {
+          "client_id": "57464760993-tc2fp7c6akfmkle7cspfn0k1j5f2cmk3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBd7pc5joj3mn89nW7hPWr-Np8FtngVznY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57464760993-tc2fp7c6akfmkle7cspfn0k1j5f2cmk3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
