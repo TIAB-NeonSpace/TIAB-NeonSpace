@@ -35,8 +35,7 @@ public class Brick : MonoBehaviour
     {
         if (go.CompareTag("Ball")) // 이것도 또한 유니티 내부 함수입니다.
         {
-             int scores_;
-           
+            int scores_;
             hitCnt -= BallManager.instance.ballHit; // 이거는 나의 맞아야할 횟수를 깎아줍니다. 제너릭하다고 봐주세요~
             if(hitCnt < 1 ) scores_ = hitCnt + BallManager.instance.ballHit;
             else scores_ = BallManager.instance.ballHit;
@@ -45,6 +44,13 @@ public class Brick : MonoBehaviour
             tweenA[brickStateCnt].ResetToBeginning(); // 이건 깜박거리는 스프라이트 함수입니다.
             tweenA[brickStateCnt].PlayForward();
             go.GetComponent<BallMove>().ball_Pos_ = Vector2.one;
+
+            ///<summary>
+            /// add combo count
+            /// </summary>
+
+            // int comboCount = 0; 
+            ComboManager.instance.CountCombo();
 
             if (hitCnt <= 0) // 암튼 그래~ 장그래~
             {
