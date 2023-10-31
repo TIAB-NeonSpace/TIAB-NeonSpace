@@ -33,6 +33,7 @@ public class Items : MonoBehaviour
         itemType = type_;
         isFalse = false;
         counts_.itemInt[idx_] = (int)type_;
+        gameObject.layer = 10;
         switch (type_) // 여기는 Sprite만 설정해주세요
         {
             case ItemInfo.Ball:
