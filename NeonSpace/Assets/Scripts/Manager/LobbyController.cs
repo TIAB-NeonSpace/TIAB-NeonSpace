@@ -119,11 +119,14 @@ public class LobbyController : MonoBehaviour
     {
         if (state_ == EnumBase.UIState.Pause) Time.timeScale = isBool?0f:1f;
 
+        //민진 - true일 경우 현재 uiState를 리스트에 저장하고 새 state_를 uiState에 대입
+        //블록이 바닥에 닿았을 때 state_ == Result, isBool == true
         if (isBool)
         {
             addState.Add(uiState);
             uiState = state_;
         }
+        //민진 - false일 경우 uiState에 가장 최신 uiState를 가져옴, 가져온 State는 리스트에서 삭제
         else
         {
             uiState = addState[addState.Count - 1];
@@ -132,6 +135,7 @@ public class LobbyController : MonoBehaviour
         if(uiState == EnumBase.UIState.Lobby) rocketBundle.SetActive(true);
         if(uiState == EnumBase.UIState.RocketBook) rocketbookBundle.SetActive(false);
         if(uiState == EnumBase.UIState.CharShow) rocketbookBundle.SetActive(true);
+        //만약 uiState == Result라면, 현재 스코어에 따른 추가 코인 획득
         tweens_.ShowBundleObject(state_ , isBool);
     }
 

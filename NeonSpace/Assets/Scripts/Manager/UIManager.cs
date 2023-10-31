@@ -14,6 +14,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     TweenAlpha moveLabelAlpha;
 
+    [SerializeField]
+    UILabel scoreCoin = null;   //score 당 추가 획득 코인 ui
+
     public bool isOneMore = false;
     public static UIManager instance;
     [SerializeField]
@@ -92,6 +95,9 @@ public class UIManager : MonoBehaviour
         {
             DataManager.instance.SetSaveFile(false);
             LobbyController.instance.SetTween(EnumBase.UIState.Result, true);
+
+            //민진 - Application.isEditor: 현재 유니티 에디터에서 실행중일 경우 true
+            //하단 업적 관련 코드
             if(!Application.isEditor)
             {
                 if (DataManager.instance.CurrentScore >= 100)
@@ -166,10 +172,12 @@ public class UIManager : MonoBehaviour
         //bgSprite.color = NGUIText.ParseColor(c);
     }
 
+    //민진 - 게임 플레이 중 현재 스코어를 화면에 반영
     public void SetScore()
     {
         scoreLabel.text = string.Format("{0:N0}",DataManager.instance.CurrentScore);
         endScoreLabel.text = string.Format("{0:N0}", DataManager.instance.CurrentScore);
+        SetScoreCoin();
     }
 
     public void SetBestScore()
@@ -189,6 +197,13 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //민진 new - 게임 종료 시 종료에 따른 추가 코인 획득 ui
+    public void SetScoreCoin()
+    {
+        scoreCoin.text = "+" + string.Format("{0:N0}", DataManager.instance.CurrentScoreCoin());
+    }
+
+    //민진 - 획득한 코인 수 세팅
     public void SetMoney()
     {
         moneyLabel.text = DataManager.instance.GetCoin().ToString();
