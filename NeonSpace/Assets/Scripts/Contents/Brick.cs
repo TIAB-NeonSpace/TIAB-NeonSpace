@@ -196,4 +196,13 @@ public class Brick : MonoBehaviour
         }
 
     }
+
+    public void HitCnt_Item()
+    {
+        hitCnt--;
+        if (hitCnt <= 0)
+            FalseMySelf();
+        else
+            LabelSetting();
+    }
 }
