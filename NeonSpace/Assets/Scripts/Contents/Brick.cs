@@ -50,7 +50,7 @@ public class Brick : MonoBehaviour
             /// </summary>
 
             // int comboCount = 0; 
-            ComboManager.instance.CountCombo();
+            //ComboManager.instance.CountCombo();
 
             if (hitCnt <= 0) // 암튼 그래~ 장그래~
             {

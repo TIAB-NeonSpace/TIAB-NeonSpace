@@ -59,10 +59,19 @@ public class DataManager : MonoBehaviour
         return PlayerPrefsElite.GetInt("Score");
     }
 
+    //현재 스코어를 get, set
     public int CurrentScore
     {
         get{return PlayerPrefsElite.GetInt("CScore");}
         set{PlayerPrefsElite.SetInt("CScore" , value);}
+    }
+
+    //민진 new - 현재 스코어에 따른 코인 수 반환
+    public int CurrentScoreCoin()
+    {
+        int currentScore = CurrentScore;
+        int getCoin = currentScore / 100;
+        return getCoin; 
     }
 
     public void SetHiddenBall()

@@ -14,7 +14,8 @@ public class ResultButton : MonoBehaviour
                 LobbyController.instance.SetTween(EnumBase.UIState.Pause, false);
                 LobbyController.instance.ChangeStateGame(false);
                 break;
-            case 1:
+            case 1: //Lobby
+                DataManager.instance.SetCoin(DataManager.instance.CurrentScoreCoin());  //민진 - 스코어에 따른 코인 추가 획득
                 DataManager.instance.SetOnemore(false);
                 UIManager.instance.ResetGame();
                 LobbyController.instance.SetTween(EnumBase.UIState.Result, false);
