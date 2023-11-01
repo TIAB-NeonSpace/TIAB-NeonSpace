@@ -214,7 +214,7 @@ public class BrickCount : MonoBehaviour
         }
 
         if (bricks_[randomItem_Pos].gameObject.activeSelf)
-            bricks_[randomItem_Pos].gameObject.SetActive(false);
+            bricks_[randomItem_Pos].FalseMySelf();
 
         return randomItem_Pos;
     }
