@@ -16,6 +16,14 @@ public class BrickCount : MonoBehaviour
     int checkingcount;
     int currentMutiple = 5;
 
+    public void Set(GameObject[] array_Obj)
+    {
+        for (int i = 0; i < bricks_.Length; i++)
+        {
+            bricks_[i].Set(array_Obj);
+        }
+    }
+
     private void OnEnable()
     {
         if (!DataManager.instance.GetSaveFile())
@@ -145,6 +153,8 @@ public class BrickCount : MonoBehaviour
         //    items_[i].gameObject.SetActive(false); // 아이템 오브젝트들을 꺼줍니다. 일단 한번
         //}
 
+        //생성 우선순위를 아이템을 먼저로 함
+
         int itemPos_Ball = RandomItem_Pos();
         if (BrickManager.instance.brickCount == 1)
         {
@@ -157,6 +167,7 @@ public class BrickCount : MonoBehaviour
             items_[itemPos_Ball].SetItemType(Items.ItemInfo.Ball); // ball item을 생성 해주는 곳 여기서 5판 마다 공을 한개씩 준다.
         }
 
+        //0~100
         int randomItem = Random.Range(0, 100);
         int itemPos_Other = RandomItem_Pos();
         if (randomItem > 39)

@@ -23,6 +23,16 @@ public class Brick : MonoBehaviour
     [SerializeField]
     GameObject[] effects_;
 
+    GameObject _obj;
+    public void Set(GameObject[] array_Obj)
+    {
+        for (int i = 0; i < array_Obj.Length; i++)
+        {
+            _obj = Instantiate(array_Obj[i], this.gameObject.transform);
+            _obj.SetActive(false);
+        }
+    }
+
     public void LabelSetting() // 현재 나의 label을 셋팅해 줍니다.^_^ 
     {
         label_.text = hitCnt.ToString(); // 이건알죠?
