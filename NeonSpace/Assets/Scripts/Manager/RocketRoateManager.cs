@@ -18,6 +18,9 @@ public class RocketRoateManager : MonoBehaviour
         m_transform = this.transform;
     }
 
+/// <summary>
+/// Using tan^-1 function with mousePosition and objectPosition
+/// </summary> 
     public void RotateRocket()
     {
         Vector3 mousePosition = UICamera.lastEventPosition ;
