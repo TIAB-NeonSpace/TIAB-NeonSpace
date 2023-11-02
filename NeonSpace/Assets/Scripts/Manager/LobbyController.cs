@@ -47,6 +47,7 @@ public class LobbyController : MonoBehaviour
 
     public void SetActionPop(bool isShow)
     {
+        Debug.Log(213);
         switch (DataManager.instance.GetGamePlayCount())
         {
             case 1:

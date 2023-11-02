@@ -27,9 +27,8 @@ public class LobbyToggleManager : MonoBehaviour
     {
         if (DataManager.instance.GetSaveFile())
         {
-            LobbyController.instance.ChangeStateGame(true);
+            //LobbyController.instance.ChangeStateGame(true);
         }
-       
     }
 
     public void SettingSound()
