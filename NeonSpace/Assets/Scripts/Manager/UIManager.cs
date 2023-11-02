@@ -81,6 +81,8 @@ public class UIManager : MonoBehaviour
 
     public void SetLineBallPos()
     {
+        // CurrentShipShow.instance.RotateShip();
+        RocketRoateManager.instance.RotateRocket();
         lineBallImg.transform.localPosition = new Vector3(LineR.GetPosition(2).y, LineR.GetPosition(2).x, 0);
     }
 
@@ -200,7 +202,7 @@ public class UIManager : MonoBehaviour
     //민진 new - 게임 종료 시 종료에 따른 추가 코인 획득 ui
     public void SetScoreCoin()
     {
-        scoreCoin.text = "+" + string.Format("{0:N0}", DataManager.instance.CurrentScoreCoin());
+        // scoreCoin.text = "+" + string.Format("{0:N0}", DataManager.instance.CurrentScoreCoin());
     }
 
     //민진 - 획득한 코인 수 세팅
