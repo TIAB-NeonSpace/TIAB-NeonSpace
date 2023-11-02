@@ -14,9 +14,15 @@ public class BrickManager : MonoBehaviour
     public BrickCount lastMoreCheck;
     [SerializeField] PingpongItem[] item_;
 
+    public GameObject[] obj_Special_Brick;
+
     void Awake()
     {
         instance = this;
+        for (int i = 0; i < bundleList.Count; i++)
+        {
+            bundleList[i].Set(obj_Special_Brick);
+        }
     }
 
     private void OnEnable()

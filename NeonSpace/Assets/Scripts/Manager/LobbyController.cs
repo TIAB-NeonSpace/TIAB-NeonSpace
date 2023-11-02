@@ -47,6 +47,7 @@ public class LobbyController : MonoBehaviour
 
     public void SetActionPop(bool isShow)
     {
+        Debug.Log(213);
         switch (DataManager.instance.GetGamePlayCount())
         {
             case 1:
@@ -115,6 +116,7 @@ public class LobbyController : MonoBehaviour
         action_idx_ = 0;
     }
 
+    //민진 - tween 버튼 처리 메소드
     public void SetTween(EnumBase.UIState state_, bool isBool)
     {
         if (state_ == EnumBase.UIState.Pause) Time.timeScale = isBool?0f:1f;
