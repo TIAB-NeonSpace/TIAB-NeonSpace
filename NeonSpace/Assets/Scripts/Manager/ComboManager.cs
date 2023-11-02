@@ -24,7 +24,11 @@ public class ComboManager : MonoBehaviour
             comboCnt ++ ;
             Debug.Log(comboCnt);
     }
-
+    public void ResetCombo()
+    {
+        comboCnt = 0 ;
+        Debug.Log("Init ComboCount : " + comboCnt);
+    }
     public void ShowComboCount()
     {
             comboLabel.text = comboCnt.ToString();
