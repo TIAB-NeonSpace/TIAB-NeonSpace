@@ -49,10 +49,8 @@ public class Brick : MonoBehaviour
             /// add combo count
             /// </summary>
 
-            // int comboCount = 0; 
-
-            // ComboManager.instance.CountCombo(); // 프리펩화 한 콤보매니저를 하이라키에 넣고 ComboManager.cs 연결하면댐
-
+            ComboManager.instance.CountCombo(); // 프리펩화 한 콤보매니저를 하이라키에 넣고 ComboManager.cs 연결하면댐
+            ComboManager.instance.UpdateComboCount();
 
             if (hitCnt <= 0) // 암튼 그래~ 장그래~
             {

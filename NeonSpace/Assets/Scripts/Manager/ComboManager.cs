@@ -23,12 +23,12 @@ public class ComboManager : MonoBehaviour
     public void CountCombo()
     {
             comboCnt ++ ;
-            Debug.Log(comboCnt);
+            // Debug.Log(comboCnt);
     }
     public void ResetCombo()
     {
         comboCnt = 0 ;
-        Debug.Log("Init ComboCount : " + comboCnt);
+        // Debug.Log("Init ComboCount : " + comboCnt);
     }
 
     public void ShowComboCount()
