@@ -8,7 +8,6 @@ public class SideWall : MonoBehaviour
     //해당 오브젝트의 Trigger 처리
     void OnTriggerEnter2D(Collider2D cd)
     {
-        Debug.Log("트리거");
         //Trigger된 것이 벽돌일 경우,
         if (cd.gameObject.CompareTag("Brick"))
         {

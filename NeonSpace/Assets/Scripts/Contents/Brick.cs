@@ -11,8 +11,8 @@ public class Brick : MonoBehaviour
     UISprite[] sprites_; // 색깔을 바꿔주기 위해서 찾아 놓은 Sprite입니다^_^
     [SerializeField]
     TweenAlpha[] tweenA;
-    bool isIncre , isReset;
-    int brickStateCnt,triRandomPiece, increaseCnt;
+    bool isIncre, isReset;
+    int brickStateCnt, triRandomPiece, increaseCnt;
     [SerializeField]
     Vector3[] triPos;
     [SerializeField]
@@ -36,7 +36,7 @@ public class Brick : MonoBehaviour
     public void LabelSetting() // 현재 나의 label을 셋팅해 줍니다.^_^ 
     {
         label_.text = hitCnt.ToString(); // 이건알죠?
-        if(count_ == null) count_ = GetComponentInParent<BrickCount>();
+        if (count_ == null) count_ = GetComponentInParent<BrickCount>();
         count_.brickInt[idx_] = hitCnt;
         BrickColor();
     }
@@ -47,7 +47,7 @@ public class Brick : MonoBehaviour
         {
             int scores_;
             hitCnt -= BallManager.instance.ballHit; // 이거는 나의 맞아야할 횟수를 깎아줍니다. 제너릭하다고 봐주세요~
-            if(hitCnt < 1 ) scores_ = hitCnt + BallManager.instance.ballHit;
+            if (hitCnt < 1) scores_ = hitCnt + BallManager.instance.ballHit;
             else scores_ = BallManager.instance.ballHit;
             DataManager.instance.CurrentScore += scores_;
             UIManager.instance.SetScore();
@@ -72,7 +72,7 @@ public class Brick : MonoBehaviour
             {
                 LabelSetting(); // 라벨을 보여주기 위해서
             }
-            SoundManager.instance.ChangeEffects(1 , 0.7f);
+            SoundManager.instance.ChangeEffects(1, 0.7f);
         }
     }
     public void alphaOn() // 알파를 켜줍니다.
@@ -105,7 +105,7 @@ public class Brick : MonoBehaviour
         }
         else
         {
-            sprites_[0].spriteName = "Sprite_Brick02"; 
+            sprites_[0].spriteName = "Sprite_Brick02";
         }
     }
 
@@ -134,10 +134,10 @@ public class Brick : MonoBehaviour
             if (f <= 0.1f) c = "Sprite_Tri02";
             if (f > 1) c = "Sprite_Tri00";
         }
-      
+
 
         //sprites_[brickStateCnt].color = NGUIText.ParseColor(c); // 이거는 ngui함수입니다. 필요하시면 읽어보세요!
-      
+
         sprites_[brickStateCnt].spriteName = c;
     }
 
@@ -155,15 +155,15 @@ public class Brick : MonoBehaviour
     {
         count_.brickSpecial[idx_] = i;
         isIncre = false;
-        if(i > 1)
+        if (i > 1)
         {
             brickStateCnt = 1;
             sprites_[0].gameObject.SetActive(false);
             sprites_[1].gameObject.SetActive(true);
-            sprites_[1].gameObject.transform.localEulerAngles = triPos[i-2];
+            sprites_[1].gameObject.transform.localEulerAngles = triPos[i - 2];
             label_.gameObject.transform.localPosition = labelPos[i - 2];
         }
-        switch(i)
+        switch (i)
         {
             case 0:
                 break;
