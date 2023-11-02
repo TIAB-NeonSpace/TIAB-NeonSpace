@@ -22,8 +22,8 @@ public class ComboManager : MonoBehaviour
     }
     public void CountCombo()
     {
-            comboCnt ++ ;
-            // Debug.Log(comboCnt);
+        comboCnt ++ ;
+        // Debug.Log(comboCnt);
     }
     public void ResetCombo()
     {
