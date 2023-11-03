@@ -59,8 +59,8 @@ public class Brick : MonoBehaviour
             /// add combo count
             /// </summary>
 
-            // int comboCount = 0; 
-            //ComboManager.instance.CountCombo();
+            ComboManager.instance.CountCombo(); // 프리펩화 한 콤보매니저를 하이라키에 넣고 ComboManager.cs 연결하면댐
+            ComboManager.instance.UpdateComboCount();
 
             if (hitCnt <= 0) // 암튼 그래~ 장그래~
             {
@@ -186,12 +186,13 @@ public class Brick : MonoBehaviour
             triRandomPiece = Random.Range(0, 4);
             sprites_[0].gameObject.SetActive(false);
             sprites_[1].gameObject.SetActive(true);
+            sprites_[2].gameObject.SetActive(false);
             brickStateCnt = 1;
             sprites_[brickStateCnt].gameObject.transform.localEulerAngles = triPos[triRandomPiece];
             label_.gameObject.transform.localPosition = labelPos[triRandomPiece];
             count_.brickSpecial[idx_] = triRandomPiece + 2;
         }
-        else
+        else if(triRandom<81)
         {
             increaseCnt = Random.Range(0, 101);
             if (increaseCnt < 11)
@@ -202,7 +203,16 @@ public class Brick : MonoBehaviour
             brickStateCnt = 0;
             sprites_[0].gameObject.SetActive(true);
             sprites_[1].gameObject.SetActive(false);
+            sprites_[2].gameObject.SetActive(false);
             label_.transform.localPosition = Vector2.zero;
+        }
+        else
+        {
+            brickStateCnt = 2;
+            sprites_[0].gameObject.SetActive(false);
+            sprites_[1].gameObject.SetActive(false);
+            sprites_[2].gameObject.SetActive(true);
+
         }
 
     }
