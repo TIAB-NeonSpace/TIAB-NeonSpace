@@ -119,6 +119,11 @@ public class BallManager : MonoBehaviour
     {
         if (isFire)
         {
+            /// <summary>
+            /// Combo Start
+            /// </summary>
+            
+            ComboManager.instance.ShowComboCount();
             fireDelay += Time.deltaTime * 1;
             if (fireDelay >= 0.1f)
             {
@@ -206,6 +211,10 @@ public class BallManager : MonoBehaviour
 
     void LastSetting()
     {
+        /// 공이 끝난다는것은 콤보가 더 안쌓일테니까 ComboManager.cs 에 있는 콤보 초기화
+        ComboManager.instance.ResetCombo();
+        ComboManager.instance.HideComboCount();
+
         DataManager.instance.SetSaveFile(true);
 
         for (int i = 0; i < plusBallCnt; ++i)
