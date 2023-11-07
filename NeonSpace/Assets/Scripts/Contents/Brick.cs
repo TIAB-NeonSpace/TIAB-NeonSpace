@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditor;
 
 public class Brick : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class Brick : MonoBehaviour
     UISprite[] sprites_; // 색깔을 바꿔주기 위해서 찾아 놓은 Sprite입니다^_^
     [SerializeField]
     TweenAlpha[] tweenA;
-    bool isIncre, isReset;
+    bool isIncre;
+    public bool isReset;
     int brickStateCnt, triRandomPiece, increaseCnt;
     [SerializeField]
     Vector3[] triPos;
@@ -54,7 +56,7 @@ public class Brick : MonoBehaviour
             tweenA[brickStateCnt].ResetToBeginning(); // 이건 깜박거리는 스프라이트 함수입니다.
             tweenA[brickStateCnt].PlayForward();
             go.GetComponent<BallMove>().ball_Pos_ = Vector2.one;
-
+            go.layer = 8;
             ///<summary>
             /// add combo count
             /// </summary>
@@ -91,6 +93,15 @@ public class Brick : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void DisableMySelf()
+    {
+        isReset = true;
+        count_.brickInt[idx_] = 0;
+        count_.brickSpecial[idx_] = 0;
+        gameObject.SetActive(false);
+    }
+
+    //매 라운드마다
     public void SetNext() // 이거는 나의 색상을 스테이지 마다 변화를 시켜주기 위해서 존재 합니다.^_^ 뿌잉
     {
         if (isReset)
@@ -123,8 +134,10 @@ public class Brick : MonoBehaviour
             if (f <= 0.25f) c = "Sprite_Brick01";
             if (f <= 0.1f) c = "Sprite_Brick02";
             if (f > 1) c = "Sprite_Brick00";
+
+            sprites_[brickStateCnt].spriteName = c;
         }
-        else
+        else if (brickStateCnt == 1)
         {
             if (f > 0.9f) c = "Sprite_Tri05";
             if (f <= 0.9f) c = "Sprite_Tri06";
@@ -133,12 +146,13 @@ public class Brick : MonoBehaviour
             if (f <= 0.25f) c = "Sprite_Tri01";
             if (f <= 0.1f) c = "Sprite_Tri02";
             if (f > 1) c = "Sprite_Tri00";
+
+            sprites_[brickStateCnt].spriteName = c;
         }
 
 
         //sprites_[brickStateCnt].color = NGUIText.ParseColor(c); // 이거는 ngui함수입니다. 필요하시면 읽어보세요!
 
-        sprites_[brickStateCnt].spriteName = c;
     }
 
     public void IncreseBrick()
@@ -151,18 +165,33 @@ public class Brick : MonoBehaviour
         BrickColor();
     }
 
+    /*SpecialBrick index
+     * 0=비활성화
+     * 1=기본
+     * 2~5=삼각 
+     * 6=쉴드
+     * 7=타이머
+     * 8=반사
+     * 9=직접
+     */
     public void SetSpecialBrick(int i)
     {
         count_.brickSpecial[idx_] = i;
+        sprites_[0].gameObject.SetActive(false);
+        sprites_[1].gameObject.SetActive(false);
+        sprites_[2].gameObject.SetActive(false);
+        sprites_[3].gameObject.SetActive(false);
+        sprites_[4].gameObject.SetActive(false);
+        sprites_[5].gameObject.SetActive(false);
         isIncre = false;
-        if (i > 1)
-        {
-            brickStateCnt = 1;
-            sprites_[0].gameObject.SetActive(false);
-            sprites_[1].gameObject.SetActive(true);
-            sprites_[1].gameObject.transform.localEulerAngles = triPos[i - 2];
-            label_.gameObject.transform.localPosition = labelPos[i - 2];
-        }
+
+        //if (i > 1 && i < 6)
+        //{
+        //    brickStateCnt = 1;
+        //    sprites_[1].gameObject.SetActive(true);
+        //    sprites_[1].gameObject.transform.localEulerAngles = triPos[i - 2];
+        //    label_.gameObject.transform.localPosition = labelPos[i - 2];
+        //}
         switch (i)
         {
             case 0:
@@ -172,6 +201,31 @@ public class Brick : MonoBehaviour
                 sprites_[0].color = Color.white;
                 sprites_[0].spriteName = "Sprite_Brick07";
                 break;
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                brickStateCnt = 1;
+                sprites_[1].gameObject.SetActive(true);
+                sprites_[1].gameObject.transform.localEulerAngles = triPos[i - 2];
+                label_.gameObject.transform.localPosition = labelPos[i - 2];
+                break;
+            case 6: //쉴드
+                brickStateCnt = 2;
+                sprites_[2].gameObject.SetActive(true);
+                break;
+            case 7: //타이머
+                brickStateCnt = 3;
+                sprites_[3].gameObject.SetActive(true);
+                break;
+            case 8://반사
+                brickStateCnt = 4;
+                sprites_[4].gameObject.SetActive(true);
+                break;
+            case 9://직접
+                brickStateCnt = 5;
+                sprites_[5].gameObject.SetActive(true);
+                break;
         }
         BrickColor();
     }
@@ -179,19 +233,56 @@ public class Brick : MonoBehaviour
     void ResetBrick()
     {
         count_.brickSpecial[idx_] = 0;
-        int triRandom = Random.Range(0, 101);
+        int Special_Random = Random.Range(0, 101);
         isIncre = false;
-        if (triRandom < 21)
+
+        sprites_[0].gameObject.SetActive(false);
+        sprites_[1].gameObject.SetActive(false);
+        sprites_[2].gameObject.SetActive(false);
+        sprites_[3].gameObject.SetActive(false);
+        sprites_[4].gameObject.SetActive(false);
+        sprites_[5].gameObject.SetActive(false);
+
+
+        if (Special_Random < 4)
         {
             triRandomPiece = Random.Range(0, 4);
-            sprites_[0].gameObject.SetActive(false);
             sprites_[1].gameObject.SetActive(true);
-            //sprites_[2].gameObject.SetActive(false);
             brickStateCnt = 1;
             sprites_[brickStateCnt].gameObject.transform.localEulerAngles = triPos[triRandomPiece];
             label_.gameObject.transform.localPosition = labelPos[triRandomPiece];
             count_.brickSpecial[idx_] = triRandomPiece + 2;
         }
+        else if (Special_Random < 8)
+        {
+            sprites_[2].gameObject.SetActive(true);
+            brickStateCnt = 2;
+            label_.transform.localPosition = Vector2.zero;
+            count_.brickSpecial[idx_] = 6;
+        }
+        else if (Special_Random < 12)
+        {
+            sprites_[3].gameObject.SetActive(true);
+            brickStateCnt = 3;
+            label_.transform.localPosition = Vector2.zero;
+            count_.brickSpecial[idx_] = 7;
+        }
+        else if (Special_Random < 16)
+        {
+            sprites_[4].gameObject.SetActive(true);
+            brickStateCnt = 4;
+            label_.transform.localPosition = Vector2.zero;
+            count_.brickSpecial[idx_] = 8;
+        }
+        else if (Special_Random < 99)
+        {
+            sprites_[5].gameObject.SetActive(true);
+            brickStateCnt = 5;
+            label_.transform.localPosition = Vector2.zero;
+            count_.brickSpecial[idx_] = 9;
+        }
+
+
         else // if(triRandom<81)
         {
             increaseCnt = Random.Range(0, 101);
@@ -202,8 +293,6 @@ public class Brick : MonoBehaviour
             }
             brickStateCnt = 0;
             sprites_[0].gameObject.SetActive(true);
-            sprites_[1].gameObject.SetActive(false);
-            //sprites_[2].gameObject.SetActive(false);
             label_.transform.localPosition = Vector2.zero;
         }
         /*else
