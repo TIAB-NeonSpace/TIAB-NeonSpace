@@ -9,7 +9,7 @@ public class TimerBrick : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("블록 생성시");
+        //Debug.Log("블록 생성시");
         sprite = GetComponent<UISprite>();
         sprite.fillAmount = 1f;
     }

@@ -42,4 +42,13 @@ public class EnumBase : MonoBehaviour
         AchieveBtn,
         AdsBtn
     }
+
+    public enum Special_Brick
+    {
+        none = 0,
+        sheld = 1,
+        timer = 2,
+        reflect = 3,
+        direct = 4,
+    }
 }
