@@ -7,7 +7,6 @@ public class BottomWall : MonoBehaviour
     {
         if(cd.gameObject.CompareTag("Ball"))
         {
-           
             BallManager.instance.SetBall(cd.gameObject);
         }
     }

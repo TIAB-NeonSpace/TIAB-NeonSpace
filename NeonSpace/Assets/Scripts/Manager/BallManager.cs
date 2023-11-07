@@ -237,4 +237,10 @@ public class BallManager : MonoBehaviour
         DataManager.instance.SetSaveBallCount(ballCnt);
         System.GC.Collect(); // 이건 쓰레기 값을 버리는 코드 입니다. 이때는 잠시 멈출 테니까..
     }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Ball"))
+            coll.gameObject.layer = 8;
+    }
 }
