@@ -47,10 +47,11 @@ public class BallManager : MonoBehaviour
         GameObject go = Instantiate(ballInstant);
         go.transform.parent = bundleTrans.transform;
         go.transform.localScale = Vector2.one;
-        go.transform.localPosition = new Vector2(0, -325);
+        go.transform.localPosition = new Vector2(0, -395);
+        
         if (DataManager.instance.GetSaveFile())
         {
-            go.transform.localPosition = new Vector2(0, -325);
+            go.transform.localPosition = new Vector2(0, -395);
             firstBall = go;
         }
         else  AddUpgradeBall();
@@ -66,7 +67,7 @@ public class BallManager : MonoBehaviour
             GameObject go = Instantiate(ballInstant);
             go.transform.parent = bundleTrans.transform;
             go.transform.localScale = Vector2.one;
-            go.transform.localPosition = new Vector3(0, -325, 0);
+            go.transform.localPosition = new Vector3(0, -395, 0);
         }
         ballCnt += plusBallCnt;
         UIManager.instance.SetBallCount(ballCnt);
@@ -137,6 +138,7 @@ public class BallManager : MonoBehaviour
         }
         if (isArrow)
         {
+            
             Vector3 pos = UICamera.lastWorldPosition;
             Vector3 player_pos = ballList[0].transform.position;
             Vector2 mouse_pos = new Vector2(pos.x - player_pos.x, pos.y - player_pos.y);
@@ -222,7 +224,7 @@ public class BallManager : MonoBehaviour
             GameObject go = Instantiate(ballInstant);
             go.transform.parent = bundleTrans.transform;
             go.transform.localScale = Vector2.one;
-            go.transform.localPosition = new Vector3(0, -325, 0);
+            go.transform.localPosition = new Vector3(0, -395, 0);
         }
         upCountBall = 0;
         ballCnt += plusBallCnt;
