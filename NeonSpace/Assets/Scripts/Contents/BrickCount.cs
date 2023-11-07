@@ -286,6 +286,32 @@ public class BrickCount : MonoBehaviour
     {
         --checkingcount;
     }
+
+    //민진-new. bricks_[random]이 활성화되어있다면 반환
+    public List<Brick> RandActiveBrick(int n)
+    {
+        int cnt = n;
+        List<Brick> activeBricks = new List<Brick>();
+        for(int i=0; i<bricks_.Length; i++)
+        {
+            if (cnt <= 0)
+            {
+                break;
+            }
+
+            int rand = Random.Range(0, bricks_.Length);
+            if (bricks_[rand].gameObject.activeSelf)
+            {
+                cnt--;
+                activeBricks.Add(bricks_[rand]);
+/*                Debug.Log("rand active brick: " + gameObject);
+                Debug.Log(bricks_[rand]);*/
+            }
+        }
+
+        return activeBricks;
+
+    }
 }
 
 
