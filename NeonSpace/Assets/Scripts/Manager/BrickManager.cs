@@ -43,6 +43,7 @@ public class BrickManager : MonoBehaviour
 
     public void SetUpCount(bool isBool = false)
     {
+        Debug.Log(123);
         if(isBool)
         {
             brickCount = DataManager.instance.GetSaveBrickCount();

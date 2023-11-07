@@ -199,7 +199,7 @@ public class BallManager : MonoBehaviour
             GameObject go = Instantiate(ballInstant);
             go.transform.parent = bundleTrans.transform;
             go.transform.localScale = Vector2.one;
-            go.transform.localPosition = firstBall.transform.localPosition;
+            go.transform.localPosition = new Vector3(0, -325, 0);
         }
         upCountBall = 0;
         ballCnt += plusBallCnt;
