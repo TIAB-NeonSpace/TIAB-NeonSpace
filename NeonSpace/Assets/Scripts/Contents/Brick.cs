@@ -56,7 +56,7 @@ public class Brick : MonoBehaviour
             tweenA[brickStateCnt].ResetToBeginning(); // 이건 깜박거리는 스프라이트 함수입니다.
             tweenA[brickStateCnt].PlayForward();
             go.GetComponent<BallMove>().ball_Pos_ = Vector2.one;
-
+            go.layer = 8;
             ///<summary>
             /// add combo count
             /// </summary>
@@ -134,8 +134,10 @@ public class Brick : MonoBehaviour
             if (f <= 0.25f) c = "Sprite_Brick01";
             if (f <= 0.1f) c = "Sprite_Brick02";
             if (f > 1) c = "Sprite_Brick00";
+
+            sprites_[brickStateCnt].spriteName = c;
         }
-        else
+        else if (brickStateCnt == 1)
         {
             if (f > 0.9f) c = "Sprite_Tri05";
             if (f <= 0.9f) c = "Sprite_Tri06";
@@ -144,12 +146,13 @@ public class Brick : MonoBehaviour
             if (f <= 0.25f) c = "Sprite_Tri01";
             if (f <= 0.1f) c = "Sprite_Tri02";
             if (f > 1) c = "Sprite_Tri00";
+
+            sprites_[brickStateCnt].spriteName = c;
         }
 
 
         //sprites_[brickStateCnt].color = NGUIText.ParseColor(c); // 이거는 ngui함수입니다. 필요하시면 읽어보세요!
 
-        sprites_[brickStateCnt].spriteName = c;
     }
 
     public void IncreseBrick()
@@ -210,30 +213,22 @@ public class Brick : MonoBehaviour
             case 6: //쉴드
                 brickStateCnt = 2;
                 sprites_[2].gameObject.SetActive(true);
-                sprites_[2].gameObject.transform.localEulerAngles = triPos[i - 2];
-                label_.gameObject.transform.localPosition = labelPos[i - 2];
                 break;
             case 7: //타이머
-                brickStateCnt = 2;
+                brickStateCnt = 3;
                 sprites_[3].gameObject.SetActive(true);
-                sprites_[3].gameObject.transform.localEulerAngles = triPos[i - 2];
-                label_.gameObject.transform.localPosition = labelPos[i - 2];
                 break;
             case 8://반사
-                brickStateCnt = 2;
+                brickStateCnt = 4;
                 sprites_[4].gameObject.SetActive(true);
-                sprites_[4].gameObject.transform.localEulerAngles = triPos[i - 2];
-                label_.gameObject.transform.localPosition = labelPos[i - 2];
                 break;
             case 9://직접
-                brickStateCnt = 2;
+                brickStateCnt = 5;
                 sprites_[5].gameObject.SetActive(true);
-                sprites_[5].gameObject.transform.localEulerAngles = triPos[i - 2];
-                label_.gameObject.transform.localPosition = labelPos[i - 2];
                 break;
         }
         BrickColor();
-    }    
+    }
 
     void ResetBrick()
     {
@@ -248,7 +243,7 @@ public class Brick : MonoBehaviour
         sprites_[4].gameObject.SetActive(false);
         sprites_[5].gameObject.SetActive(false);
 
-        
+
         if (Special_Random < 4)
         {
             triRandomPiece = Random.Range(0, 4);
@@ -262,7 +257,6 @@ public class Brick : MonoBehaviour
         {
             sprites_[2].gameObject.SetActive(true);
             brickStateCnt = 2;
-            sprites_[brickStateCnt].gameObject.transform.localEulerAngles = triPos[triRandomPiece];
             label_.transform.localPosition = Vector2.zero;
             count_.brickSpecial[idx_] = 6;
         }
