@@ -27,7 +27,8 @@ public class RocketRoateManager : MonoBehaviour
         // 원래는 m_transform.position으로 값 받아왔지만
         // 마우스가 탐지하는 좌표랑 해당 좌표의 괴리값이 있어서 그냥 고정값으로 넣음
         // Vector3 objectPosition = new Vector3(438,78,0); 
-        Vector3 objectPosition = new Vector3(368,67,0); 
+        // Vector3 objectPosition = new Vector3(368,67,0); 
+        Vector3 objectPosition = new Vector3(623,107,0); 
         // Debug.Log("mouse position : " + mousePosition); 
         // Debug.Log("object position : " + objectPosition);
         float directionY = mousePosition.y - objectPosition.y;
