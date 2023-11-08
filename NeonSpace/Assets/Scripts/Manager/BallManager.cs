@@ -13,7 +13,6 @@ public class BallManager : MonoBehaviour
     public Vector3 ballPos;
     public int ballHit, ballY;
     [SerializeField] public int ballCnt, upCountBall, plusBallCnt, colorIdx;
-    //[SerializeField] TimerBrick timerbrick;
 
     Vector3 pos;
     bool isArrow, isFire;
@@ -213,7 +212,12 @@ public class BallManager : MonoBehaviour
     public void LastSetting()
     {
         /// 공이 끝난다는것은 콤보가 더 안쌓일테니까 ComboManager.cs 에 있는 콤보 초기화
-        //timerbrick.timechecking();
+        GameObject targetObject = GameObject.Find("Timer");
+        if (targetObject != null)
+        {
+            targetObject.GetComponent<TimerBrick>().timechecking();
+        }
+
         ComboManager.instance.ResetCombo();
         ComboManager.instance.HideComboCount();
 
