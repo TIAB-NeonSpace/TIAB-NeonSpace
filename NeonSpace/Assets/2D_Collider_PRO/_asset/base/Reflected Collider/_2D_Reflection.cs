@@ -8,6 +8,7 @@ using System.Collections.Generic;
 public class _2D_Reflection : MonoBehaviour 
 {
 
+
 	[Space(15)]
 
 	[SerializeField()][Tooltip("Will it run at start , or you want to manually activate it ?")]
@@ -49,7 +50,7 @@ public class _2D_Reflection : MonoBehaviour
 	Vector2 current_dir;
 	float current_lenght;
 	LayerMask combined_mask;
-	const int max_rays = 30;
+	const int max_rays = 30; // origin  = 30;
 
 	RaycastHit2D current_obstacle;
 	_2D_Active_Object last_active_object;
@@ -174,6 +175,11 @@ public class _2D_Reflection : MonoBehaviour
 		// first point and direction
 		current_origin = (Vector2)ray_source.position;
 		current_dir = (Vector2)ray_source.right;
+		
+
+		//Debug
+		// Debug.Log("Current Origin : "+ current_origin);
+		// Debug.Log("Current dir : "+ current_dir);
 
 		// reset old points
 		points.Clear ();
@@ -186,7 +192,10 @@ public class _2D_Reflection : MonoBehaviour
 
 		for (int i = 0; i < current_rays_count; i++)
 		{
-			rhits_2d[i] = Physics2D.Raycast (current_origin, current_dir , Mathf.Infinity , combined_mask.value);
+			rhits_2d[i] = Physics2D.Raycast(current_origin, current_dir , Mathf.Infinity , combined_mask.value);
+			// rhits_2d[i] = Physics2D.CircleCast(new Vector2(0,0), 1f,Vector2.up,Mathf.Infinity);
+			// CicleCast를 함 알아보자.
+
 			if(rhits_2d[i].collider != null)
 			{
 				// set new origin and direction for raycast
@@ -194,7 +203,7 @@ public class _2D_Reflection : MonoBehaviour
 				points.Add (current_origin);
 				current_dir = Vector3.Reflect(current_dir , rhits_2d[i].normal);
 
-                //CheckReflectPos = Vector3.Reflect(current_dir, rhits_2d[i].normal); // 볼 위치 용!!
+                // CheckReflectPos = Vector3.Reflect(current_dir, rhits_2d[i].normal); // 볼 위치 용!!
 
                 //if ray collided with active objects , call event
                 if (rhits_2d[i].collider.CompareTag(Active_Objects_Tag))
@@ -217,7 +226,7 @@ public class _2D_Reflection : MonoBehaviour
 					current_obstacle = rhits_2d[i];
 					break;
 				}
-                //if (rhits_2d[i].collider != null)
+                // if (rhits_2d[i].collider != null)
                 //    CheckReflectPos = line_rend.GetPosition(2);//rhits_2d[i].collider.transform.position;
             }
 		}
@@ -239,7 +248,7 @@ public class _2D_Reflection : MonoBehaviour
 
 	}
 
-    //public Vector3 CheckReflectPos;
+    // public Vector3 CheckReflectPos;
 
 
 
@@ -281,7 +290,7 @@ public class _2D_Reflection : MonoBehaviour
 			if(i == 0)
             {
                 line_rend.SetPosition(0, local_points[i]);
-                //CheckReflectPos = local_points[i];
+                // CheckReflectPos = local_points[i];
             }	
 			else
 				if(i == local_points.Length-1) 
