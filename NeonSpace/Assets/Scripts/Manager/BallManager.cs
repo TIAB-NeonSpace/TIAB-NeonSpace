@@ -123,7 +123,7 @@ public class BallManager : MonoBehaviour
             /// Combo Start
             /// </summary>
             
-            ComboManager.instance.ShowComboCount();
+            UIManager.instance.ShowComboCount();
             fireDelay += Time.deltaTime * 1;
             if (fireDelay >= 0.1f)
             {
@@ -211,15 +211,14 @@ public class BallManager : MonoBehaviour
 
     public void LastSetting()
     {
-        /// 공이 끝난다는것은 콤보가 더 안쌓일테니까 ComboManager.cs 에 있는 콤보 초기화
         GameObject targetObject = GameObject.Find("Timer");
         if (targetObject != null)
         {
-            targetObject.GetComponent<TimerBrick>().timechecking();
+            targetObject.GetComponent<TimerBrick>().timechecking(); // 이거 빨간줄 뜨는데 어카지 
         }
-
-        ComboManager.instance.ResetCombo();
-        ComboManager.instance.HideComboCount();
+        /// 공이 끝난다는것은 콤보가 더 안쌓일테니까 ComboManager.cs 에 있는 콤보 초기화
+        UIManager.instance.ResetCombo();
+        UIManager.instance.HideComboCount();
 
         DataManager.instance.SetSaveFile(true);
 
