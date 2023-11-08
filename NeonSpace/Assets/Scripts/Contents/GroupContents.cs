@@ -48,7 +48,9 @@ public class GroupContents : MonoBehaviour
 		if(DataManager.instance.GetCoin() >=  DataManager.instance.ReturenStartBallCoin)
 		{
 			DataManager.instance.SetCoin(-DataManager.instance.ReturenStartBallCoin);	//코인 차감
-			DataManager.instance.StartBall += 1;										//시작 공 갯수 증가
+			DataManager.instance.StartBall += 1;
+			DataManager.instance.CurrentCoin += DataManager.instance.ReturenStartBallCurCoin;
+				//시작 공 갯수 증가
 			
 /*			//!!공 스프라이트 변경 코드
 			if(DataManager.instance.StartBall % 10 == 1)	//1의 자리가 1일때 공의 스프라이트 정수값을 1 증가 시킴
@@ -87,6 +89,7 @@ public class GroupContents : MonoBehaviour
 		{
 			DataManager.instance.SetCoin(-DataManager.instance.ReturenFireBallCoin);
 			DataManager.instance.FirePower += 1;
+			DataManager.instance.CurrentCoin += DataManager.instance.ReturenFireBallCurCoin;
 
 /*			//!!---우주선 스프라이트 변경 코드---!!
 			if(DataManager.instance.FirePower % 10 == 1)
@@ -113,6 +116,21 @@ public class GroupContents : MonoBehaviour
 		{
 			LobbyController.instance.SetTween(EnumBase.UIState.ChargeMoney , true);
 		}
+	}
+
+	public void ResetUpgrade()
+	{
+		planeChange.ChangeShip();
+		ballSprite.spriteName = DataManager.instance.GetBall();
+
+		DataManager.instance.PlaneSprite = 0;
+		DataManager.instance.BallSprite = 0;
+		DataManager.instance.StartBall = 1;
+		DataManager.instance.FirePower = 1;
+
+		DataManager.instance.SetCoin(+DataManager.instance.CurrentCoin);
+		DataManager.instance.CurrentCoin = 0;
+		SetAnim();
 	}
 
 

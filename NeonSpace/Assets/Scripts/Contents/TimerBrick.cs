@@ -9,9 +9,12 @@ public class TimerBrick : MonoBehaviour
 
     private void OnEnable()
     {
-        //Debug.Log("블록 생성시");
-        sprite = GetComponent<UISprite>();
         sprite.fillAmount = 1f;
+    }
+
+    private void Awake()
+    {
+        sprite = GetComponent<UISprite>();
     }
 
     public void timechecking()
@@ -22,12 +25,9 @@ public class TimerBrick : MonoBehaviour
         }
         if (sprite.fillAmount - 0.334f < 0f)
         {
+            Debug.Log("timezero");
             sprite.fillAmount = 0f;
-            //타이머 이미지랑 블록 자체가 사라짐
-            //턴을 한 번더 실행
             Invoke("laterdoing", 0.1f);
-            timer = GameObject.Find("Timer");
-            Destroy(timer);
         }
 
         else sprite.fillAmount -= 0.334f;
@@ -37,5 +37,6 @@ public class TimerBrick : MonoBehaviour
     void laterdoing()
     {
         BallManager.instance.LastSetting();
+        transform.parent.parent.GetComponent<Brick>().FalseMySelf();
     }
 }

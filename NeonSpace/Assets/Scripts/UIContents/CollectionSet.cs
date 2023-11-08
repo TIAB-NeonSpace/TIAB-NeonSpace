@@ -70,6 +70,7 @@ public class CollectionSet : MonoBehaviour
             }
             else
             {
+                RocketSelectBlocker[i].SetActive(false);
                 RocketBlocker[i].SetActive(true);
             }
             chkNum += 10;
@@ -102,6 +103,7 @@ public class CollectionSet : MonoBehaviour
             }
             else
             {
+                BallSelectBlocker[i].SetActive(false);
                 BallBlocker[i].SetActive(true);
             }
             chkNum += 10;

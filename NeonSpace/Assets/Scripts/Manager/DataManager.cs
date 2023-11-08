@@ -74,6 +74,14 @@ public class DataManager : MonoBehaviour
         return getCoin; 
     }
 
+
+    public int CurrentCoin
+    {
+        get { return PlayerPrefsElite.GetInt("CCoin"); }
+        set { PlayerPrefsElite.SetInt("CCoin", value); }
+    }
+
+
     public void SetHiddenBall()
     {
         PlayerPrefsElite.SetBoolean("HiddenBall", true);
@@ -309,6 +317,16 @@ public class DataManager : MonoBehaviour
       public int ReturenFireBallCoin
     {
         get {return upgradeFireBallCoins[FirePower - 1];}
+    }
+
+
+    public int ReturenStartBallCurCoin
+    {
+        get { return upgradeStartBallCoins[StartBall - 2]; }
+    }
+    public int ReturenFireBallCurCoin
+    {
+        get { return upgradeFireBallCoins[FirePower - 2]; }
     }
 
     public int BallSprite 

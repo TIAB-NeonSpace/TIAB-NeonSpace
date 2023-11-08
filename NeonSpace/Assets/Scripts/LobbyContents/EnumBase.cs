@@ -29,7 +29,8 @@ public class EnumBase : MonoBehaviour
         InGame,
         BestScore,
         Plane,
-        Tutorial
+        Tutorial,
+        Reset
     }
 
     public enum ButtonState
@@ -40,7 +41,8 @@ public class EnumBase : MonoBehaviour
         BallBtn,
         LeaderboardBtn,
         AchieveBtn,
-        AdsBtn
+        AdsBtn,
+        ResetBtn
     }
 
     public enum Special_Brick

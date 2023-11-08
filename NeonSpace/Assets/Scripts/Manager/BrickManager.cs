@@ -174,17 +174,28 @@ public class BrickManager : MonoBehaviour
     {
         int cnt = n;
         List<Brick> activeBricks = new List<Brick>();
+        List<Brick> tmpList = new List<Brick>();
 
-        for(int i= 0; i<=counts_; i++)
+        int repeat = counts_;
+        if (isOver)
         {
-            activeBricks.AddRange(bundleList[i].RandActiveBrick(cnt));
-            cnt -= activeBricks.Count;
-            if (cnt <= 0)
-            {
-                break;
-            }
+            repeat = 8;
         }
+        for(int i= 0; i<=repeat; i++)
+        {
+            tmpList = bundleList[i].RandActiveBrick(cnt);
+            if (tmpList.Count > 0)
+            {
+                activeBricks.AddRange(tmpList);
+                cnt -= activeBricks.Count;
+                if (activeBricks.Count >= n)
+                {
+                    break;
+                }
 
+            }
+
+        }
         return activeBricks;
     }
     //민진 new - 블록의 카운트를 0으로 만드는 메소드
