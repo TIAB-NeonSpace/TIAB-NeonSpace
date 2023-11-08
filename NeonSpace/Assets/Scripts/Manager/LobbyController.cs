@@ -10,8 +10,10 @@ public class LobbyController : MonoBehaviour
     public List<LobbySprite> lobbySprite;
     public GameObject rocketBundle;
     public GameObject rocketbookBundle;
+    public GameObject resetBundle;
     [SerializeField] GameObject ingameObj;
     [SerializeField] GameObject lobbyObj;
+
     int action_idx_ = 0;
      [SerializeField] EnumBase.UIState uiState = EnumBase.UIState.Lobby;
     public List<EnumBase.UIState> addState;
