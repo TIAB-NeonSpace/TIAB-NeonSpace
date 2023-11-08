@@ -12,8 +12,7 @@ public class ShieldBrickCollider : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D cd)
     {
-        if (cd.gameObject.CompareTag("Ball"))
-            Shieldbrick_.SetCollider(cd.gameObject);
+        Shieldbrick_.SetCollider(cd.gameObject);
     }
 
 }

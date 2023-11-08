@@ -30,6 +30,7 @@ public class RocketRoateManager : MonoBehaviour
         // Vector3 objectPosition = new Vector3(623,106,0); //2차 왜 출발값이 바뀌는거지 
         Vector3 objectPosition = new Vector3(365,78,0); //3차 왜 출발값이 바뀌는거지 
         // 공의 출발위치 = oobjectPosition.y + 43;
+
         float directionY = mousePosition.y - objectPosition.y;
         float directionX = mousePosition.x - objectPosition.x;
         
@@ -37,7 +38,7 @@ public class RocketRoateManager : MonoBehaviour
 
         float rotateDegree =  Mathf.Atan2(directionY, directionX) * Mathf.Rad2Deg;
         if (rotateDegree < 1) return ; // 각도가 작으면 걍 움직이지마
-
+		
         // m_transform.transform.LookAt(new Vector3(0,0,rotateDegree));
         // Debug.Log ("Euler : " + Quaternion.Euler (0f,0f, rotateDegree-90));
 		m_transform.rotation = Quaternion.Euler (0f,0f, rotateDegree-90);

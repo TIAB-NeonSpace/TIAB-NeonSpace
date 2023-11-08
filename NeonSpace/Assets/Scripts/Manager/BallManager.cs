@@ -13,7 +13,6 @@ public class BallManager : MonoBehaviour
     public Vector3 ballPos;
     public int ballHit, ballY;
     [SerializeField] public int ballCnt, upCountBall, plusBallCnt, colorIdx;
-    //[SerializeField] TimerBrick timerbrick;
 
     Vector3 pos;
     bool isArrow, isFire;
@@ -213,10 +212,9 @@ public class BallManager : MonoBehaviour
         System.GC.Collect();
     }
 
-    public void LastSetting()
+    void LastSetting()
     {
         /// 공이 끝난다는것은 콤보가 더 안쌓일테니까 ComboManager.cs 에 있는 콤보 초기화
-        //timerbrick.timechecking();
         ComboManager.instance.ResetCombo();
         ComboManager.instance.HideComboCount();
 
@@ -239,11 +237,5 @@ public class BallManager : MonoBehaviour
         DataManager.instance.SetSaveBrickCount(BrickManager.instance.brickCount);
         DataManager.instance.SetSaveBallCount(ballCnt);
         System.GC.Collect(); // 이건 쓰레기 값을 버리는 코드 입니다. 이때는 잠시 멈출 테니까..
-    }
-
-    private void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (coll.gameObject.CompareTag("Ball"))
-            coll.gameObject.layer = 8;
     }
 }

@@ -9,21 +9,14 @@ public class BallMove : MonoBehaviour
     [SerializeField] UISprite sprite_ = null;
     [SerializeField] TweenPosition t_pos;
     public bool isMove;
-    public bool isReflect;
-
-    public Collider2D collider;
-
 
     void Start()
     {
         BallManager.instance.ballList.Add(this);
-        collider.enabled = false;
     }
 
     public void SetMove(float forceX, float force)
     {
-        collider.enabled = true;
-        isReflect = false;
         isMove = true;
         sprite_.enabled = true;
         sprite_.spriteName = DataManager.instance.GetBall();
@@ -61,13 +54,7 @@ public class BallMove : MonoBehaviour
         else t_pos.from.y = -393;
         t_pos.ResetToBeginning();
         t_pos.PlayForward();
-        collider.enabled = false;
-    }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        gameObject.layer = 8;
-        if (coll.gameObject.CompareTag("Wall"))
-            isReflect = true;
     }
 }
+
+   
