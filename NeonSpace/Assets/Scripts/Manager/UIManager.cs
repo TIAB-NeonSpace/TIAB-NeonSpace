@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
         // CurrentShipShow.instance.RotateShip();
         RocketRoateManager.instance.RotateRocket();
         lineBallImg.transform.localPosition = new Vector3(LineR.GetPosition(2).y, LineR.GetPosition(2).x, 0);
+        
     }
 
     public void SetTouchSprite(Vector3 pos)
