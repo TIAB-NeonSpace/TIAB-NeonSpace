@@ -314,4 +314,13 @@ public class Brick : MonoBehaviour
         else
             LabelSetting();
     }
+
+    //민진 new - (ufo) 블록의 카운트를 0으로 만듭니다.
+    public void MakeZero()
+    {
+        hitCnt = 0;
+        if (count_ == null) count_ = GetComponentInParent<BrickCount>();
+        count_.CheckingAllCelar();
+        Invoke("FalseMySelf", 0.05f);
+    }
 }

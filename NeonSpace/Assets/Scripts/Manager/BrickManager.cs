@@ -168,4 +168,28 @@ public class BrickManager : MonoBehaviour
         UIManager.instance.ResultOneMoreBtnDelete();
         LobbyController.instance.SetTween(EnumBase.UIState.Result , false);
     }
+
+    //매개변수 값 만큼의 랜덤한 활성화 벽돌을 배열로 반환
+    public List<Brick> FindRandActiveBrick(int n)
+    {
+        int cnt = n;
+        List<Brick> activeBricks = new List<Brick>();
+
+        for(int i= 0; i<=counts_; i++)
+        {
+            activeBricks.AddRange(bundleList[i].RandActiveBrick(cnt));
+            cnt -= activeBricks.Count;
+            if (cnt <= 0)
+            {
+                break;
+            }
+        }
+
+        return activeBricks;
+    }
+    //민진 new - 블록의 카운트를 0으로 만드는 메소드
+    public void BrickCntZero(Brick brick)
+    {
+        brick.MakeZero();
+    }
 }
