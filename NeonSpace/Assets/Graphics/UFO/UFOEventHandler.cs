@@ -13,7 +13,6 @@ public class UFOEventHandler : MonoBehaviour
 
     public void UFOAppear()
     {
-        Debug.Log("ufo appear");
         ufoItem.UFOAttack();
         animator.SetTrigger("End");
     }

@@ -7,12 +7,8 @@ public class UFOItem : MonoBehaviour
 {
     [SerializeField] PostProcessVolume ppv; //메인 카메라에 붙어있는 post process volume 컴포넌트
     [SerializeField] GameObject UFO;
+    [SerializeField] ParticleSystem[] fx = new ParticleSystem[3];
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //UFOStart();
-    }
 
     //UFO 아이템 획득 시 실행
     public void UFOStart()
@@ -35,6 +31,12 @@ public class UFOItem : MonoBehaviour
     public void UFOAttack()
     {
         //UFO 공격 이펙트 실행
+        for(int i=0; i<fx.Length; i++)
+        {
+            fx[i].gameObject.SetActive(false);
+            fx[i].gameObject.SetActive(true);
+            fx[i].Play();
+        }
         //랜덤 블록 삭제
         List<Brick> bricks = new List<Brick>();
         bricks = BrickManager.instance.FindRandActiveBrick(3);

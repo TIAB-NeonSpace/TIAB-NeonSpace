@@ -292,6 +292,7 @@ public class BrickCount : MonoBehaviour
     {
         int cnt = n;
         List<Brick> activeBricks = new List<Brick>();
+
         for(int i=0; i<bricks_.Length; i++)
         {
             if (cnt <= 0)
@@ -299,13 +300,10 @@ public class BrickCount : MonoBehaviour
                 break;
             }
 
-            int rand = Random.Range(0, bricks_.Length);
-            if (bricks_[rand].gameObject.activeSelf)
+            if (bricks_[i].gameObject.activeSelf)
             {
                 cnt--;
-                activeBricks.Add(bricks_[rand]);
-/*                Debug.Log("rand active brick: " + gameObject);
-                Debug.Log(bricks_[rand]);*/
+                activeBricks.Add(bricks_[i]);
             }
         }
 
