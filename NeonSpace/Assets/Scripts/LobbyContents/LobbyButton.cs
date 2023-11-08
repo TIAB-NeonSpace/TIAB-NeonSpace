@@ -19,6 +19,8 @@ public class LobbyButton : MonoBehaviour
         {
             return;
         }
+        if (btnState_ == EnumBase.ButtonState.ResetBtn) LobbyController.instance.resetBundle.SetActive(true);
+
         if(btnState_ == EnumBase.ButtonState.CharBtn)
         {
             if (DataManager.instance.GetSaveMyChar(idx) > 0)
@@ -80,6 +82,9 @@ public class LobbyButton : MonoBehaviour
             case EnumBase.UIState.Exit:
                 if(idx == 0) LobbyController.instance.SetExit();
                 LobbyController.instance.SetTween(EnumBase.UIState.Exit, false);
+                break;
+            case EnumBase.UIState.Reset:
+                LobbyController.instance.resetBundle.SetActive(false);
                 break;
             case EnumBase.UIState.CharBuy:
                 DataManager.instance.SetSaveMyChar(LobbyToggleManager.instance.buyCharIdx);
