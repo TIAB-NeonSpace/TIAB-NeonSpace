@@ -200,8 +200,7 @@ public class BallManager : MonoBehaviour
             GameObject go = Instantiate(ballInstant);
             go.transform.parent = bundleTrans.transform;
             go.transform.localScale = Vector2.one;
-            // go.transform.localPosition = firstBall.transform.localPosition; 누가 뺀거지 
-            go.transform.localPosition = new Vector3(0, -395, 0);  //만약 고정값 넣을꺼면 이걸로 -325 -> -395로 수정할께요.
+            go.transform.localPosition = firstBall.transform.localPosition;
         }
         upCountBall = 0;
         ballCnt += plusBallCnt;
