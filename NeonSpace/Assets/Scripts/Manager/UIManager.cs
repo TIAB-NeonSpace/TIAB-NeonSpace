@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] LineRenderer LineR;
     [SerializeField] UISprite lineBallImg;
     [SerializeField]
-    UILabel ballCount = null, moneyLabel = null, hudMoney = null, moveLabel = null, scoreLabel = null,  endScoreLabel = null, endBestSocre = null, oneMoreLabel = null;
+    UILabel ballCount = null, moneyLabel = null, hudMoney = null, moveLabel = null, scoreLabel = null,  endScoreLabel = null, endBestSocre = null, oneMoreLabel = null , comboTextLabel = null;
     [SerializeField]
     TweenAlpha moveLabelAlpha;
 
@@ -23,6 +24,9 @@ public class UIManager : MonoBehaviour
     float times_, charPos_;
 
     [SerializeField] UIButton oneMoreBtn;
+
+    private int comboCnt ;  // From ComboManager.cs
+
     void Awake()
     {
         instance = this;
@@ -250,4 +254,41 @@ public class UIManager : MonoBehaviour
             oneMoreSprite.color = Color.gray;
         }
     }
+
+    ///<summary>
+    /// Move Code From ComboManager.cs To Here
+    ///</summary>
+
+    public void CountCombo()
+    {
+        comboCnt ++ ;
+        // Debug.Log(comboCnt);
+    }
+    public void ResetCombo()
+    {
+        comboCnt = 0 ;
+        // Debug.Log("Init ComboCount : " + comboCnt);
+    }
+
+    public void ShowComboCount()
+    {
+        // Debug.Log("showComboCount Active");
+        comboTextLabel.gameObject.SetActive(true);
+        if(comboCnt >= 1 && comboCnt %20 ==0) //combo가 20마다 콤보텍스트의 스케일을 키우자 
+        {
+            Debug.Log("combo over 20 ");
+        }
+        comboTextLabel.text = comboCnt.ToString();
+    }
+    public void UpdateComboCount()
+    {
+        // Debug.Log("UpdateComboCount Active");
+        comboTextLabel.text = comboCnt.ToString();
+    }
+    public void HideComboCount()
+    {
+        // Debug.Log("HideComboCount Active");
+        comboTextLabel.gameObject.SetActive(false);
+    }
+
 }
