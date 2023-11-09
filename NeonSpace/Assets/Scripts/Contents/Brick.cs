@@ -224,10 +224,12 @@ public class Brick : MonoBehaviour
             case 8://반사
                 brickStateCnt = 4;
                 sprites_[4].gameObject.SetActive(true);
+                label_.gameObject.transform.localPosition = labelPos[4];
                 break;
             case 9://직접
                 brickStateCnt = 5;
                 sprites_[5].gameObject.SetActive(true);
+                label_.gameObject.transform.localPosition = labelPos[4];
                 break;
         }
         BrickColor();
