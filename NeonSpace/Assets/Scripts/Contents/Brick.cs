@@ -86,6 +86,8 @@ public class Brick : MonoBehaviour
     public void FalseMySelf() // 여기는 꺼주는 역활을 합니다.
     {
         //SoundManager.instance.SetClipAtPoint(0, Vector3.zero);
+        if (brickStateCnt == 3)
+            BrickManager.instance.isTimer = false;
         isReset = true;
         count_.brickInt[idx_] = 0;
         count_.brickSpecial[idx_] = 0;
@@ -217,6 +219,7 @@ public class Brick : MonoBehaviour
             case 7: //타이머
                 brickStateCnt = 3;
                 sprites_[3].gameObject.SetActive(true);
+                BrickManager.instance.isTimer = true;
                 break;
             case 8://반사
                 brickStateCnt = 4;
@@ -260,12 +263,13 @@ public class Brick : MonoBehaviour
             label_.transform.localPosition = Vector2.zero;
             count_.brickSpecial[idx_] = 6;
         }
-        else if (Special_Random < 12)
+        else if (Special_Random < 12 && !BrickManager.instance.isTimer)
         {
             sprites_[3].gameObject.SetActive(true);
             brickStateCnt = 3;
             label_.transform.localPosition = Vector2.zero;
             count_.brickSpecial[idx_] = 7;
+            BrickManager.instance.isTimer = true;
         }
         else if (Special_Random < 16)
         {
@@ -274,7 +278,7 @@ public class Brick : MonoBehaviour
             label_.transform.localPosition = Vector2.zero;
             count_.brickSpecial[idx_] = 8;
         }
-        else if (Special_Random < 99)
+        else if (Special_Random < 20)
         {
             sprites_[5].gameObject.SetActive(true);
             brickStateCnt = 5;

@@ -16,6 +16,8 @@ public class BrickManager : MonoBehaviour
 
     public GameObject[] obj_Special_Brick;
 
+    public bool isTimer;
+
     void Awake()
     {
         instance = this;

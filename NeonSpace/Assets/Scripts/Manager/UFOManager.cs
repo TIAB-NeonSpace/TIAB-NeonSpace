@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
-public class UFOItem : MonoBehaviour
+public class UFOManager : MonoBehaviour
 {
     [SerializeField] PostProcessVolume ppv; //메인 카메라에 붙어있는 post process volume 컴포넌트
     [SerializeField] GameObject UFO;
     [SerializeField] ParticleSystem[] fx = new ParticleSystem[3];
 
+    public static UFOManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     //UFO 아이템 획득 시 실행
     public void UFOStart()
