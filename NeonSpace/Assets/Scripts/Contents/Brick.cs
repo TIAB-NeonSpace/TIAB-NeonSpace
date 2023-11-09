@@ -277,14 +277,14 @@ public class Brick : MonoBehaviour
         {
             sprites_[4].gameObject.SetActive(true);
             brickStateCnt = 4;
-            label_.transform.localPosition = Vector2.zero;
+            label_.gameObject.transform.localPosition = labelPos[4];
             count_.brickSpecial[idx_] = 8;
         }
         else if (Special_Random < 20)
         {
             sprites_[5].gameObject.SetActive(true);
             brickStateCnt = 5;
-            label_.transform.localPosition = Vector2.zero;
+            label_.gameObject.transform.localPosition = labelPos[4];
             count_.brickSpecial[idx_] = 9;
         }
 
