@@ -57,6 +57,8 @@ public class BrickCount : MonoBehaviour
             if (bricks_[random_Block_Pos].gameObject.activeSelf)
                 continue;
             bricks_[random_Block_Pos].gameObject.SetActive(true); // 여기서 켜줍니다. 누구를? 내자식오브젝트들을 켜줍니다^_^ 
+            if (bricks_[random_Block_Pos].brickStateCnt == 3)
+                BrickManager.instance.isTimer = true;
             ++checkingcount;
             if (BrickManager.instance.brickCount % 100 == 0)
             {
