@@ -17,7 +17,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     UILabel scoreCoin = null;   //score 당 추가 획득 코인 ui
-
+    [SerializeField]
+    GameObject rocketObject;
     public bool isOneMore = false;
     public static UIManager instance;
     [SerializeField]
@@ -26,6 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] UIButton oneMoreBtn;
 
     private int comboCnt ;  // From ComboManager.cs
+    private bool isOver200 = false;
 
     void Awake()
     {
@@ -68,6 +70,7 @@ public class UIManager : MonoBehaviour
         else dotSprite.enabled = isShow;
 
         arrowSprite.transform.localEulerAngles = new Vector3(0, 0, eulerZ);
+        rocketObject.transform.localEulerAngles = new Vector3(0,0, eulerZ);
     }
 
     public void SetSprite(bool isShow, Vector3 pos)
@@ -85,8 +88,6 @@ public class UIManager : MonoBehaviour
 
     public void SetLineBallPos()
     {
-        // CurrentShipShow.instance.RotateShip();
-        RocketRoateManager.instance.RotateRocket();
         lineBallImg.transform.localPosition = new Vector3(LineR.GetPosition(2).y, LineR.GetPosition(2).x, 0);
     }
 
@@ -267,6 +268,7 @@ public class UIManager : MonoBehaviour
     public void ResetCombo()
     {
         comboCnt = 0 ;
+        comboTextLabel.fontSize = 30;
         // Debug.Log("Init ComboCount : " + comboCnt);
     }
 
@@ -274,15 +276,23 @@ public class UIManager : MonoBehaviour
     {
         // Debug.Log("showComboCount Active");
         comboTextLabel.gameObject.SetActive(true);
-        if(comboCnt >= 1 && comboCnt %20 ==0) //combo가 20마다 콤보텍스트의 스케일을 키우자 
-        {
-            Debug.Log("combo over 20 ");
-        }
-        comboTextLabel.text = comboCnt.ToString();
+
     }
     public void UpdateComboCount()
     {
         // Debug.Log("UpdateComboCount Active");
+        comboTextLabel.text = comboCnt.ToString();
+        if(!isOver200&&comboCnt >= 1 && comboCnt %20 ==0) //combo가 20마다 콤보텍스트의 스케일을 키우자 
+        {
+            comboTextLabel.fontSize  = comboTextLabel.fontSize + 7;
+            // Debug.Log("combo over 20 ");
+            // Combo가 커질떄마다 무한히 커지면 안되니까 콤보 400까지 커지도록
+            if(comboCnt >= 400)
+            {
+                isOver200 = true;
+            }
+        }
+        
         comboTextLabel.text = comboCnt.ToString();
     }
     public void HideComboCount()

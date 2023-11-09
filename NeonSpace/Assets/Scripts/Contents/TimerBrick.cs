@@ -25,7 +25,6 @@ public class TimerBrick : MonoBehaviour
         }
         if (sprite.fillAmount - 0.334f < 0f)
         {
-            Debug.Log("timezero");
             sprite.fillAmount = 0f;
             Invoke("laterdoing", 0.1f);
         }
