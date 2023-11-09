@@ -270,8 +270,8 @@ public class UIManager : MonoBehaviour
         comboCnt = 0 ;
         isOver200 = false;
         comboTextLabel.text = comboCnt.ToString();
-        comboTextLabel.fontSize = 30;
-        comboTextLabel.color = Color.red;
+        comboTextLabel.fontSize = 36;
+        comboTextLabel.color = Color.white;
         // Debug.Log("Init ComboCount : " + comboCnt);
     }
 
@@ -294,14 +294,11 @@ public class UIManager : MonoBehaviour
             {
                 isOver200 = true;
             }
-            if(comboCnt >=30) comboTextLabel.color = Color.blue;
-            if(comboCnt >=60) comboTextLabel.color = Color.green;
-            if(comboCnt >=90) comboTextLabel.color = Color.cyan;
-            if(comboCnt >=120) comboTextLabel.color = Color.grey;
-            if(comboCnt >=150) comboTextLabel.color = Color.yellow;
-            if(comboCnt >=180) comboTextLabel.color = Color.white;
-            if(comboCnt >=210) comboTextLabel.color = Color.black;
-            if(comboCnt >=240) comboTextLabel.color = Color.magenta;
+            if(comboCnt >=10) comboTextLabel.color = Color.yellow;
+            if(comboCnt >=20) comboTextLabel.color = Color.green;
+            if(comboCnt >=50) comboTextLabel.color = Color.blue;
+            if(comboCnt >=100) comboTextLabel.color = Color.red;
+            if(comboCnt >=200) comboTextLabel.color = Color.magenta;
         }
         
         comboTextLabel.text = comboCnt.ToString();
