@@ -16,5 +16,9 @@ public class checkitem : MonoBehaviour
 
             col.transform.parent.GetComponent<Brick>().HitCnt_Item();
         }
+        if (col.gameObject.CompareTag("ShieldBrick"))
+        {
+            col.transform.parent.parent.GetComponent<Brick>().HitCnt_Item();
+        }
     }
 }

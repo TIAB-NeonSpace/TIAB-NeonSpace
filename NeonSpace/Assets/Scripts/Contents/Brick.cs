@@ -64,7 +64,7 @@ public class Brick : MonoBehaviour
             /// add combo count
             /// </summary>
 
-            comboFx.Play();
+            //comboFx.Play();
             UIManager.instance.CountCombo(); // 프리펩화 한 콤보매니저를 하이라키에 넣고 ComboManager.cs 연결하면댐
             UIManager.instance.UpdateComboCount();
 
