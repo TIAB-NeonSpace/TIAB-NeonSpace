@@ -206,6 +206,10 @@ public class BrickCount : MonoBehaviour
                             items_[itemPos_Other].gameObject.SetActive(true);
                             items_[itemPos_Other].SetItemType(Items.ItemInfo.PingPong);
                             break;
+                        case 5:
+                            items_[itemPos_Other].gameObject.SetActive(true);
+                            items_[itemPos_Other].SetItemType(Items.ItemInfo.UFO);
+                            break;
                     }
                 }
             }
