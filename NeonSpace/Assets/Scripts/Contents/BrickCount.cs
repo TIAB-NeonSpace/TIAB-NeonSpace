@@ -172,7 +172,7 @@ public class BrickCount : MonoBehaviour
         //0~100
         int randomItem = Random.Range(0, 100);
         int itemPos_Other = RandomItem_Pos();
-        if (randomItem > 39)
+        if (randomItem > 49)
         {
             items_[itemPos_Other].gameObject.SetActive(true);
             items_[itemPos_Other].SetItemType(Items.ItemInfo.Coin);
@@ -183,7 +183,7 @@ public class BrickCount : MonoBehaviour
             {
                 if (!bricks_[i].gameObject.activeSelf)
                 {
-                    int rnd = Random.Range(0, 10);
+                    int rnd = Random.Range(0, 6);
                     switch (rnd)
                     {
                         case 0:
