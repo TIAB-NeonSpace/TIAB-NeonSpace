@@ -268,7 +268,9 @@ public class UIManager : MonoBehaviour
     public void ResetCombo()
     {
         comboCnt = 0 ;
+        comboTextLabel.text = comboCnt.ToString();
         comboTextLabel.fontSize = 30;
+        comboTextLabel.color = Color.red;
         // Debug.Log("Init ComboCount : " + comboCnt);
     }
 
@@ -287,10 +289,18 @@ public class UIManager : MonoBehaviour
             comboTextLabel.fontSize  = comboTextLabel.fontSize + 7;
             // Debug.Log("combo over 20 ");
             // Combo가 커질떄마다 무한히 커지면 안되니까 콤보 400까지 커지도록
-            if(comboCnt >= 400)
+            if(comboCnt >= 200)
             {
                 isOver200 = true;
             }
+            if(comboCnt >=30) comboTextLabel.color = Color.blue;
+            if(comboCnt >=60) comboTextLabel.color = Color.green;
+            if(comboCnt >=90) comboTextLabel.color = Color.cyan;
+            if(comboCnt >=120) comboTextLabel.color = Color.grey;
+            if(comboCnt >=150) comboTextLabel.color = Color.yellow;
+            if(comboCnt >=180) comboTextLabel.color = Color.white;
+            if(comboCnt >=210) comboTextLabel.color = Color.black;
+            if(comboCnt >=240) comboTextLabel.color = Color.magenta;
         }
         
         comboTextLabel.text = comboCnt.ToString();
