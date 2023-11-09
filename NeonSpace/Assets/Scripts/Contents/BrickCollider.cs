@@ -23,12 +23,12 @@ public class BrickCollider : MonoBehaviour
             return;
 
         ball = cd.gameObject.GetComponent<BallMove>();
-
         if (special_Brick == EnumBase.Special_Brick.reflect && !ball.isReflect)
             return;
         if (special_Brick == EnumBase.Special_Brick.direct && ball.isReflect)
             return;
 
+        ball.isReflect = true;
         brick_.SetCollider(cd.gameObject);
     }
 }
