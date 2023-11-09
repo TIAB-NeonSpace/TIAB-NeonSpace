@@ -296,7 +296,7 @@ public class UIManager : MonoBehaviour
             }
             if(comboCnt >=10) comboTextLabel.color = Color.yellow;
             if(comboCnt >=20) comboTextLabel.color = Color.green;
-            if(comboCnt >=50) comboTextLabel.color = Color.blue;
+            if(comboCnt >=50) comboTextLabel.color = Color.cyan;
             if(comboCnt >=100) comboTextLabel.color = Color.red;
             if(comboCnt >=200) comboTextLabel.color = Color.magenta;
         }
