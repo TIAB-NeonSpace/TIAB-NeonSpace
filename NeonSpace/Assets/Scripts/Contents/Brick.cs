@@ -14,7 +14,8 @@ public class Brick : MonoBehaviour
     TweenAlpha[] tweenA;
     bool isIncre;
     public bool isReset;
-    int brickStateCnt, triRandomPiece, increaseCnt;
+    public int brickStateCnt;
+    int triRandomPiece, increaseCnt;
     [SerializeField]
     Vector3[] triPos;
     [SerializeField]
