@@ -183,7 +183,7 @@ public class BrickCount : MonoBehaviour
             {
                 if (!bricks_[i].gameObject.activeSelf)
                 {
-                    int rnd = Random.Range(0, 10);
+                    int rnd = Random.Range(0, 6);
                     switch (rnd)
                     {
                         case 0:
