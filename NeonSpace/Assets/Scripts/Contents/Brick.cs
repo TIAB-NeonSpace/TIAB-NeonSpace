@@ -24,6 +24,8 @@ public class Brick : MonoBehaviour
     BrickCount count_;
     [SerializeField]
     GameObject[] effects_;
+    [SerializeField]
+    ParticleSystem comboFx;
 
     GameObject _obj;
     public void Set(GameObject[] array_Obj)
@@ -61,6 +63,7 @@ public class Brick : MonoBehaviour
             /// add combo count
             /// </summary>
 
+            comboFx.Play();
             UIManager.instance.CountCombo(); // 프리펩화 한 콤보매니저를 하이라키에 넣고 ComboManager.cs 연결하면댐
             UIManager.instance.UpdateComboCount();
 
