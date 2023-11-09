@@ -268,6 +268,7 @@ public class UIManager : MonoBehaviour
     public void ResetCombo()
     {
         comboCnt = 0 ;
+        isOver200 = false;
         comboTextLabel.text = comboCnt.ToString();
         comboTextLabel.fontSize = 30;
         comboTextLabel.color = Color.red;
