@@ -5,7 +5,7 @@ using UnityEngine;
 public class UFOEventHandler : MonoBehaviour
 {
     Animator animator;
-    [SerializeField] UFOItem ufoItem;
+    [SerializeField] UFOManager ufoItem;
     private void Awake()
     {
         animator = GetComponent<Animator>();

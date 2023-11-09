@@ -13,6 +13,7 @@ public class Items : MonoBehaviour
         PingPong = 5,
         Coin = 6,
         Balls = 7,
+        UFO = 8,
         None = -1
     }
     public ItemInfo itemType;
@@ -20,7 +21,7 @@ public class Items : MonoBehaviour
     UISprite sprite_;//, shadowSprite_ = null;
     [SerializeField]
     int idx_;
-    string spriteName_ ;
+    string spriteName_;
     bool isFalse;
     [SerializeField]
     bool isToong;
@@ -60,6 +61,9 @@ public class Items : MonoBehaviour
             case ItemInfo.Coin:
                 spriteName_ = "Icon_Coin";
                 break;
+            case ItemInfo.UFO:
+                spriteName_ = "alien";
+                break;
         }
         sprite_.spriteName = spriteName_;
     }
@@ -83,7 +87,7 @@ public class Items : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D cd)
     {
-        if(cd.gameObject.CompareTag("Ball"))
+        if (cd.gameObject.CompareTag("Ball"))
         {
             isFalse = true;
             switch (itemType)
@@ -99,7 +103,7 @@ public class Items : MonoBehaviour
                     break;
                 case ItemInfo.Width:
                     SoundManager.instance.ChangeEffects(2);
-                    GameContents.instance.gameitem(gameObject.transform.position ,0);
+                    GameContents.instance.gameitem(gameObject.transform.position, 0);
                     break;
                 case ItemInfo.Height:
                     SoundManager.instance.ChangeEffects(2);
@@ -123,6 +127,11 @@ public class Items : MonoBehaviour
                     SoundManager.instance.ChangeEffects(3);
                     cd.gameObject.GetComponent<BallMove>().ball_Pos_ = cd.transform.position;
                     GameContents.instance.pingpongItem(cd.gameObject);
+                    break;
+                case ItemInfo.UFO:
+                    SoundManager.instance.ChangeEffects(7);
+                    UFOManager.instance.UFOStart();
+                    gameObject.SetActive(false);
                     break;
             }
         }
