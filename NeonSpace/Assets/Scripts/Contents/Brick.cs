@@ -170,7 +170,7 @@ public class Brick : MonoBehaviour
     /*SpecialBrick index
      * 0=비활성화
      * 1=기본
-     * 2~5=삼각 
+     * 2~5=삼각
      * 6=쉴드
      * 7=타이머
      * 8=반사
