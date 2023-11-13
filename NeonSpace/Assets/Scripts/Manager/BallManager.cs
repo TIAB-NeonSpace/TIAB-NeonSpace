@@ -21,6 +21,9 @@ public class BallManager : MonoBehaviour
     [SerializeField]
     int fireCnt = 0;
 
+    public Animator anim_Rocket;
+
+
     void Awake()
     {
         instance = this;
@@ -80,14 +83,17 @@ public class BallManager : MonoBehaviour
         if (isPlayGame) return;//|| LobbyController.instance.uiState != EnumBase.UIState.InGame) return;
         isArrow = isBool;
 
+        
+
         if (isBool)
         {
             pos = UICamera.lastWorldPosition;//Input.mousePosition;
-           
+            anim_Rocket.SetTrigger("OnPress");
         }
         else
         {
             UIManager.instance.SetTouchSprite(new Vector3(1000, 1000, 0));
+            
             if (forceY >= 100f)
             {
                 isFire = true;
@@ -155,6 +161,14 @@ public class BallManager : MonoBehaviour
     {
         if (fireCnt < ballList.Count)
         {
+            if(fireCnt == ballCnt-1)
+            {
+                anim_Rocket.SetTrigger("LastBall");
+            }
+            else 
+            {
+                anim_Rocket.SetTrigger("ShootBall");
+            }
             ballList[fireCnt].SetMove(-forceX, force);
             UIManager.instance.SetBallCount(ballCnt - (fireCnt + 1));
             ++fireCnt;
