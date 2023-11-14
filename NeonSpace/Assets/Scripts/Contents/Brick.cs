@@ -204,6 +204,7 @@ public class Brick : MonoBehaviour
                 break;
             case 1:
                 isIncre = true;
+                sprites_[0].gameObject.SetActive(true);
                 sprites_[0].color = Color.white;
                 sprites_[0].spriteName = "Sprite_Brick07";
                 break;

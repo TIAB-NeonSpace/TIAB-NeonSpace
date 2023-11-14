@@ -83,8 +83,6 @@ public class BallManager : MonoBehaviour
         if (isPlayGame) return;//|| LobbyController.instance.uiState != EnumBase.UIState.InGame) return;
         isArrow = isBool;
 
-        
-
         if (isBool)
         {
             pos = UICamera.lastWorldPosition;//Input.mousePosition;
