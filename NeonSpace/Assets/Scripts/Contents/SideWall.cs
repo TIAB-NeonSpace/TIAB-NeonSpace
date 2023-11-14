@@ -4,6 +4,10 @@ using System.Collections;
 public class SideWall : MonoBehaviour
 {
     //게임 화면 하단에 위치한 콜라이더 오브젝트
+    void Start()
+    {
+        this.gameObject.layer= 6;
+    }
 
     //해당 오브젝트의 Trigger 처리
     void OnTriggerEnter2D(Collider2D cd)
