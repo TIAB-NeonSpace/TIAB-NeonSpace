@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using UnityEditor.Presets;
 
 // gameObject.transform.childCount << 이것에 용도는 내 자식 오브젝트의 개수를 가져옵니다.
 public class BrickCount : MonoBehaviour
