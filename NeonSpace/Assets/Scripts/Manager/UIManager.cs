@@ -83,7 +83,7 @@ public class UIManager : MonoBehaviour
         else dotSprite.enabled = isShow;
         LineR.enabled = isShow;
         lineBallImg.enabled = isShow;
-        arrowSprite.transform.localPosition = new Vector2(pos.x, arrowSprite.transform.localPosition.y);
+        //arrowSprite.transform.localPosition = new Vector2(pos.x, arrowSprite.transform.localPosition.y);
     }
 
     public void SetLineBallPos()
